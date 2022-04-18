@@ -5,15 +5,15 @@ jobs:
   job_one:
     name: Clone
     runs-on: ubuntu-latest
-    steps: 
-      - name: testing
+    steps:
+      - name: create initial
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST  }}
-          username: ${{ secrets.USERNAME  }}
-          password: ${{ secrets.PASSWORD  }}
-          port: ${{ secrets.PORT  }}
+          host: ${{ secrets.HOST }} 
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
           script: |
-            touch ~/.ssh/known_hosts
-            ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-            git clone git@github.com:syhong2/cmsc389T-web-template.git
+              touch ~/.ssh/known_hosts
+              ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+              git clone git@github.com:syhong2/cmsc389T-web-template.git
