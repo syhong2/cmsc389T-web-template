@@ -6,11 +6,11 @@
 #there should be a total of 9 lines
 
 FROM node:10-alpine
-RUN useradd -ms /bin/bash node
-RUN mkdir -p /home/node/app/ && chown -R node:node/home/node/app
+RUN mkdir -p /home/node/app/ && chown -R node:node /home/node/app && npm install package.json
 WORKDIR /home/node/app
-COPY *.java ./
-USER node
-RUN
-COPY
-CMD
+COPY node_modules app.js ./
+USER node 
+EXPOSE 8080
+RUN node app.js
+COPY --chown=node:node . .
+CMD build -t node-web-app && run --name "website" -p 80:8080 -d node-web-app
